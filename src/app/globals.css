@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-canvas: 248 246 243;
+  --color-canvas-muted: 238 234 228;
+  --color-text: 20 20 20;
+  --color-text-muted: 94 94 94;
+  --color-accent: 34 85 70;
+  --font-sans: "Inter", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-serif: "Iropke Batang", "Noto Serif KR", serif;
+}
+
+.dark {
+  --color-canvas: 18 18 18;
+  --color-canvas-muted: 30 30 30;
+  --color-text: 243 243 243;
+  --color-text-muted: 170 170 170;
+  --color-accent: 156 217 197;
+}
+
+body {
+  @apply bg-canvas text-text antialiased;
+}
+
+::selection {
+  background-color: rgb(var(--color-accent) / 0.2);
+}
+
+.prose {
+  @apply max-w-readable;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 96px;
+}
+
+.prose a {
+  @apply text-text underline decoration-text-muted/40 underline-offset-4 transition-colors;
+}
+
+.prose a:hover {
+  @apply text-accent;
+}
+
+.prose code {
+  @apply rounded bg-canvas-muted px-1 py-0.5 text-[0.9em];
+}
+
+.prose pre {
+  @apply rounded-2xl border border-canvas-muted bg-canvas-muted p-4;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
