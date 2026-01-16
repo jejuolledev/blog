@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { BootSequence } from '@/components/boot/BootSequence';
 import { FullscreenStack } from '@/components/fullscreen-stack';
+import { NetworkBackground } from '@/components/network-background';
 
 const ComputerScene = dynamic(
   () => import('@/components/boot/ComputerScene').then((mod) => mod.ComputerScene),
@@ -103,11 +104,12 @@ function MainContent() {
 
 function HomeSection() {
   return (
-    <div className="flex h-full items-center justify-center bg-gradient-to-b from-[#0a1a15] to-canvas px-6">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:40px_40px]" />
-      </div>
-      <div className="relative max-w-4xl text-center text-white">
+    <div className="relative flex h-full items-center justify-center overflow-hidden px-6">
+      {/* Interactive Network Background */}
+      <NetworkBackground />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl text-center text-white">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
