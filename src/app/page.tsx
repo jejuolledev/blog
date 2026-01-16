@@ -65,9 +65,14 @@ export default function HomePage() {
 function MainContent() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      initial={{ opacity: 0, y: 60, scale: 0.97 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+        opacity: { duration: 0.5 },
+        scale: { duration: 0.6 },
+      }}
       className="min-h-screen bg-canvas"
     >
       {/* Hero Section */}
