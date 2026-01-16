@@ -1,17 +1,20 @@
-import { getAllTags, getPublishedPosts } from '@/lib/posts';
+import { getPublishedProjects, getPublishedDevlogs } from '@/lib/content';
 
 const siteUrl = 'https://jejuolledev.com';
 
 export function GET() {
-  const posts = getPublishedPosts();
-  const tags = getAllTags();
+  const projects = getPublishedProjects();
+  const devlogs = getPublishedDevlogs();
+
   const urls = [
     '',
-    '/posts',
-    '/tags',
+    '/projects',
+    '/devlog',
+    '/skills',
     '/about',
-    ...posts.map((post) => `/posts/${post.slug}`),
-    ...tags.map(([tag]) => `/tags/${encodeURIComponent(tag)}`)
+    '/contact',
+    ...projects.map((p) => `/projects/${p.slug}`),
+    ...devlogs.map((d) => `/devlog/${d.slug}`),
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

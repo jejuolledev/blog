@@ -1,36 +1,26 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/components/theme-provider';
-import { SiteFooter } from '@/components/site-footer';
-import { SiteHeader } from '@/components/site-header';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'jejuolledev — Blog',
+    default: 'jejuolledev — Developer Portfolio',
     template: '%s · jejuolledev'
   },
-  description: '제주에서 개발하며 기록하는 미니멀 블로그.',
+  description: '프론트엔드 개발자의 포트폴리오와 개발 일지',
   metadataBase: new URL('https://jejuolledev.com'),
   openGraph: {
-    title: 'jejuolledev — Blog',
-    description: '제주에서 개발하며 기록하는 미니멀 블로그.',
+    title: 'jejuolledev — Developer Portfolio',
+    description: '프론트엔드 개발자의 포트폴리오와 개발 일지',
     url: 'https://jejuolledev.com',
     siteName: 'jejuolledev',
     locale: 'ko_KR',
-    type: 'website',
-    images: [
-      {
-        url: '/og?title=jejuolledev&subtitle=Minimal%20tech%20journal',
-        width: 1200,
-        height: 630
-      }
-    ]
+    type: 'website'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'jejuolledev — Blog',
-    description: '제주에서 개발하며 기록하는 미니멀 블로그.',
-    images: ['/og?title=jejuolledev&subtitle=Minimal%20tech%20journal']
+    title: 'jejuolledev — Developer Portfolio',
+    description: '프론트엔드 개발자의 포트폴리오와 개발 일지'
   },
   alternates: {
     types: {
@@ -46,14 +36,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className="min-h-screen bg-canvas text-text">
-        <ThemeProvider>
-          <div className="flex min-h-screen flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-        </ThemeProvider>
+      <body className="min-h-screen bg-canvas text-text antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
