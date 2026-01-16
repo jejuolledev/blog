@@ -7,21 +7,20 @@ interface BootSequenceProps {
 }
 
 const bootMessages = [
-  { text: 'BIOS Version 1.0.0', delay: 100 },
-  { text: 'Copyright (C) 2024 JejuOlleDev Systems', delay: 200 },
-  { text: '', delay: 100 },
-  { text: 'CPU: Creative Mind @ 3.5GHz', delay: 150 },
-  { text: 'Memory Test: 16384MB OK', delay: 200 },
-  { text: '', delay: 100 },
-  { text: 'Detecting Primary IDE Master... [Developer Skills]', delay: 180 },
-  { text: 'Detecting Primary IDE Slave... [Design Sense]', delay: 180 },
-  { text: '', delay: 100 },
-  { text: 'Loading Operating System...', delay: 300 },
-  { text: '', delay: 100 },
-  { text: '██████████████████████████████ 100%', delay: 400 },
-  { text: '', delay: 100 },
-  { text: 'Welcome to JejuOlleDev Portfolio', delay: 200 },
-  { text: 'Initializing workspace...', delay: 300 },
+  { text: 'BIOS Version 1.0.0', delay: 50 },
+  { text: 'Copyright (C) 2024 ZZB Labs / JejuOlleDev', delay: 80 },
+  { text: '', delay: 30 },
+  { text: 'CPU: Creative Mind @ 3.5GHz', delay: 60 },
+  { text: 'Memory Test: 16384MB OK', delay: 80 },
+  { text: '', delay: 30 },
+  { text: 'Detecting IDE Master... [Developer Skills]', delay: 60 },
+  { text: 'Detecting IDE Slave... [Design Sense]', delay: 60 },
+  { text: '', delay: 30 },
+  { text: 'Loading Operating System...', delay: 100 },
+  { text: '██████████████████████████████ 100%', delay: 150 },
+  { text: '', delay: 30 },
+  { text: 'Welcome to 배정길\'s Portfolio', delay: 100 },
+  { text: 'Initializing workspace...', delay: 150 },
 ];
 
 export function BootSequence({ onComplete }: BootSequenceProps) {
@@ -65,7 +64,7 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
       const timeout = setTimeout(() => {
         setCurrentText(prev => prev + message.text[charIndex]);
         setCharIndex(prev => prev + 1);
-      }, 20);
+      }, 8);
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => {

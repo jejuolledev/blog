@@ -72,12 +72,12 @@ function MainContent() {
         <div className="relative mx-auto max-w-5xl">
           <p className="font-mono text-sm text-emerald-400">~/jejuolledev</p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">
-            개발자의 작업실
+            배정길의 작업실
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-gray-300">
             프론트엔드 개발과 디자인 사이 어딘가에서 작업하고 있습니다.
             <br />
-            앱과 웹 프로젝트를 만들고, 그 과정을 기록합니다.
+            앱과 웹 서비스를 만들고, 그 과정을 기록합니다.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
