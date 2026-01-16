@@ -7,8 +7,8 @@ interface BootSequenceProps {
 }
 
 const bootMessages = [
-  { text: 'BIOS Version 1.0.0', delay: 50 },
-  { text: 'Copyright (C) 2025 모아허브', delay: 80 },
+  { text: 'BIOS Version 2.0.26', delay: 50 },
+  { text: 'Copyright (C) 2026 모아허브', delay: 80 },
   { text: '', delay: 30 },
   { text: 'CPU: Creative Mind @ 3.5GHz', delay: 60 },
   { text: 'Memory Test: 16384MB OK', delay: 80 },
@@ -19,8 +19,8 @@ const bootMessages = [
   { text: 'Loading Operating System...', delay: 100 },
   { text: '██████████████████████████████ 100%', delay: 150 },
   { text: '', delay: 30 },
-  { text: 'Welcome to 배정길\'s Portfolio', delay: 100 },
-  { text: 'Initializing workspace...', delay: 150 },
+  { text: '[ 모아허브 - 배정길의 작업실 ]', delay: 100 },
+  { text: 'System Ready. Welcome!', delay: 150 },
 ];
 
 export function BootSequence({ onComplete }: BootSequenceProps) {
