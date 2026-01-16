@@ -3,6 +3,7 @@ import { getPublishedProjects, getStatusBadge } from '@/lib/content';
 import { format } from 'date-fns';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { PageTransition } from '@/components/page-transition';
 
 export const metadata = {
   title: 'Projects',
@@ -13,7 +14,7 @@ export default function ProjectsPage() {
   const projects = getPublishedProjects();
 
   return (
-    <>
+    <PageTransition>
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 py-12">
         <div className="mb-12">
@@ -78,6 +79,6 @@ export default function ProjectsPage() {
         )}
       </main>
       <SiteFooter />
-    </>
+    </PageTransition>
   );
 }

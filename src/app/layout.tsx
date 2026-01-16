@@ -4,27 +4,27 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'jejuolledev — Developer Portfolio',
-    template: '%s · jejuolledev'
+    default: '모아허브 — 배정길의 작업실',
+    template: '%s · 모아허브'
   },
-  description: '프론트엔드 개발자의 포트폴리오와 개발 일지',
-  metadataBase: new URL('https://jejuolledev.com'),
+  description: '개인 개발자의 포트폴리오와 개발 일지',
+  metadataBase: new URL('https://moahub.co.kr'),
   openGraph: {
-    title: 'jejuolledev — Developer Portfolio',
-    description: '프론트엔드 개발자의 포트폴리오와 개발 일지',
-    url: 'https://jejuolledev.com',
-    siteName: 'jejuolledev',
+    title: '모아허브 — 배정길의 작업실',
+    description: '개인 개발자의 포트폴리오와 개발 일지',
+    url: 'https://moahub.co.kr',
+    siteName: '모아허브',
     locale: 'ko_KR',
     type: 'website'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'jejuolledev — Developer Portfolio',
-    description: '프론트엔드 개발자의 포트폴리오와 개발 일지'
+    title: '모아허브 — 배정길의 작업실',
+    description: '개인 개발자의 포트폴리오와 개발 일지'
   },
   alternates: {
     types: {
-      'application/rss+xml': [{ url: '/rss.xml', title: 'jejuolledev RSS' }]
+      'application/rss+xml': [{ url: '/rss.xml', title: '모아허브 RSS' }]
     }
   }
 };

@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { MdxContent } from '@/components/mdx-content';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { PageTransition } from '@/components/page-transition';
 
 export async function generateStaticParams() {
   return allProjects
@@ -33,7 +34,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   const status = getStatusBadge(project.status);
 
   return (
-    <>
+    <PageTransition>
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-6 py-12">
         <Link
@@ -101,6 +102,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </article>
       </main>
       <SiteFooter />
-    </>
+    </PageTransition>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { PageTransition } from '@/components/page-transition';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ export default function ContactPage() {
   };
 
   return (
-    <>
+    <PageTransition>
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-6 py-12">
         <div className="grid gap-12 lg:grid-cols-2">
@@ -108,7 +109,7 @@ export default function ContactPage() {
         </div>
       </main>
       <SiteFooter />
-    </>
+    </PageTransition>
   );
 }
 
