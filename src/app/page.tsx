@@ -1,72 +1,189 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { getPublishedPosts } from '@/lib/posts';
-import { PostCard } from '@/components/post-card';
+import { BootSequence } from '@/components/boot/BootSequence';
+
+const ComputerScene = dynamic(
+  () => import('@/components/boot/ComputerScene').then((mod) => mod.ComputerScene),
+  { ssr: false }
+);
+
+type BootState = 'off' | 'booting' | 'ready';
 
 export default function HomePage() {
-  const posts = getPublishedPosts().slice(0, 3);
+  const [bootState, setBootState] = useState<BootState>('off');
+  const [showContent, setShowContent] = useState(false);
+  const [hasVisited, setHasVisited] = useState(false);
+
+  useEffect(() => {
+    // Check if user has visited before in this session
+    const visited = sessionStorage.getItem('hasVisited');
+    if (visited) {
+      setHasVisited(true);
+      setBootState('ready');
+      setShowContent(true);
+    }
+  }, []);
+
+  const handlePowerOn = () => {
+    setBootState('booting');
+  };
+
+  const handleBootComplete = () => {
+    setBootState('ready');
+    sessionStorage.setItem('hasVisited', 'true');
+    setTimeout(() => setShowContent(true), 500);
+  };
+
+  // If user has visited before, show content directly
+  if (hasVisited && showContent) {
+    return <MainContent />;
+  }
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 py-12">
-      <section className="grid gap-10 lg:grid-cols-[1.4fr_0.9fr]">
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-text-muted">Journal</p>
-          <h1 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
-            제주에서 기록하는 성장과 디자인의 기록
+    <div className="relative min-h-screen bg-[#0a0a0f]">
+      {bootState === 'off' && (
+        <ComputerScene isPoweredOn={false} onPowerOn={handlePowerOn} />
+      )}
+
+      {bootState === 'booting' && <BootSequence onComplete={handleBootComplete} />}
+
+      {bootState === 'ready' && (
+        <div
+          className={`transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <MainContent />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MainContent() {
+  return (
+    <div className="min-h-screen bg-canvas">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0a1a15] to-canvas px-6 py-24 text-white">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:40px_40px]" />
+        </div>
+        <div className="relative mx-auto max-w-5xl">
+          <p className="font-mono text-sm text-emerald-400">~/jejuolledev</p>
+          <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">
+            개발자의 작업실
           </h1>
-          <p className="mt-4 max-w-readable text-base text-text-muted">
-            제품, 사용자 경험, 그리고 팀의 배움을 기록합니다. 짧은 기록들이 모여 더 나은 내일을
-            만들길 바랍니다.
+          <p className="mt-6 max-w-2xl text-lg text-gray-300">
+            프론트엔드 개발과 디자인 사이 어딘가에서 작업하고 있습니다.
+            <br />
+            앱과 웹 프로젝트를 만들고, 그 과정을 기록합니다.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/posts"
-              className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white"
+              href="/projects"
+              className="rounded-lg bg-emerald-500 px-6 py-3 font-semibold text-white transition-all hover:bg-emerald-600"
             >
-              최근 글 보기
+              프로젝트 보기
             </Link>
             <Link
-              href="/about"
-              className="rounded-full border border-canvas-muted px-5 py-2 text-sm font-semibold text-accent"
+              href="/devlog"
+              className="rounded-lg border border-white/20 px-6 py-3 font-semibold text-white transition-all hover:bg-white/10"
             >
-              소개 보기
+              개발 일지
             </Link>
           </div>
         </div>
-        <aside className="rounded-3xl border border-canvas-muted/80 bg-canvas/60 p-6">
-          <p className="text-sm uppercase tracking-[0.2em] text-text-muted">Profile</p>
-          <h2 className="mt-3 text-xl font-semibold">정기록 · Frontend Engineer</h2>
-          <p className="mt-3 text-sm text-text-muted">
-            제주에서 일하며 작은 실험을 기록합니다. 감각적인 UI와 탄탄한 제품 경험을 연구해요.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3 text-xs text-text-muted">
-            <span className="rounded-full bg-canvas-muted px-3 py-1">#React</span>
-            <span className="rounded-full bg-canvas-muted px-3 py-1">#DesignSystem</span>
-            <span className="rounded-full bg-canvas-muted px-3 py-1">#Life</span>
+      </section>
+
+      {/* Quick Links */}
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <div className="grid gap-6 md:grid-cols-3">
+          <QuickLink
+            href="/projects"
+            title="Projects"
+            description="앱과 웹 프로젝트들"
+            icon="📱"
+          />
+          <QuickLink
+            href="/devlog"
+            title="Devlog"
+            description="개발 일지와 기록"
+            icon="📝"
+          />
+          <QuickLink href="/about" title="About" description="소개와 연락처" icon="👋" />
+        </div>
+      </section>
+
+      {/* Skills Preview */}
+      <section className="border-t border-canvas-muted bg-canvas-muted/30 px-6 py-16">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="text-2xl font-bold">Tech Stack</h2>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {[
+              'React',
+              'Next.js',
+              'TypeScript',
+              'Tailwind CSS',
+              'Three.js',
+              'Supabase',
+              'Figma',
+              'Node.js',
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="rounded-full bg-canvas px-4 py-2 text-sm font-medium"
+              >
+                {skill}
+              </span>
+            ))}
           </div>
-          <div className="mt-6 flex flex-wrap gap-4 text-sm">
+          <Link
+            href="/skills"
+            className="mt-6 inline-block text-sm text-accent hover:underline"
+          >
+            더 보기 →
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-canvas-muted px-6 py-12">
+        <div className="mx-auto max-w-5xl text-center text-sm text-text-muted">
+          <div className="mb-4 flex justify-center gap-6">
             <a href="https://github.com/jejuolledev" className="hover:text-accent">
               GitHub
             </a>
-            <a href="mailto:hello@jejuolledev.com" className="hover:text-accent">
-              Email
-            </a>
+            <Link href="/contact" className="hover:text-accent">
+              Contact
+            </Link>
           </div>
-        </aside>
-      </section>
-
-      <section className="mt-14">
-        <div className="flex items-end justify-between">
-          <h2 className="text-2xl font-semibold">최근 글</h2>
-          <Link href="/posts" className="text-sm text-text-muted hover:text-accent">
-            전체 보기
-          </Link>
+          <p>© 2024 jejuolledev. All rights reserved.</p>
         </div>
-        <div className="mt-6 grid gap-5">
-          {posts.map((post) => (
-            <PostCard key={post._id} post={post} />
-          ))}
-        </div>
-      </section>
+      </footer>
     </div>
+  );
+}
+
+function QuickLink({
+  href,
+  title,
+  description,
+  icon,
+}: {
+  href: string;
+  title: string;
+  description: string;
+  icon: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group rounded-2xl border border-canvas-muted bg-canvas p-6 transition-all hover:border-accent hover:shadow-lg"
+    >
+      <span className="text-4xl">{icon}</span>
+      <h3 className="mt-4 text-xl font-semibold group-hover:text-accent">{title}</h3>
+      <p className="mt-2 text-sm text-text-muted">{description}</p>
+    </Link>
   );
 }
