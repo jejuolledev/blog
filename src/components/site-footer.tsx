@@ -8,7 +8,7 @@ export function SiteFooter() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xl">💻</span>
-              <span className="font-bold">jejuolledev</span>
+              <span className="font-bold">배정길 (ZZB Labs)</span>
             </div>
             <p className="mt-2 text-sm text-text-muted">
               프론트엔드 개발자의 작업실
