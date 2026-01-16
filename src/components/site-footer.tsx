@@ -8,10 +8,10 @@ export function SiteFooter() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xl">💻</span>
-              <span className="font-bold">배정길 (ZZB Labs)</span>
+              <span className="font-bold">배정길 (모아허브)</span>
             </div>
             <p className="mt-2 text-sm text-text-muted">
-              프론트엔드 개발자의 작업실
+              개인 개발자의 작업실
             </p>
           </div>
 
@@ -33,16 +33,16 @@ export function SiteFooter() {
           <div>
             <h4 className="font-semibold">Connect</h4>
             <div className="mt-3 flex flex-col gap-2 text-sm text-text-muted">
+              <a href="mailto:jejuolleapps@gmail.com" className="hover:text-accent">
+                Email
+              </a>
               <a
-                href="https://github.com/jejuolledev"
+                href="https://moahub.co.kr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-accent"
               >
-                GitHub
-              </a>
-              <a href="mailto:hello@jejuolledev.com" className="hover:text-accent">
-                Email
+                MoaHub
               </a>
             </div>
           </div>
@@ -62,7 +62,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-canvas-muted pt-8 text-sm text-text-muted sm:flex-row">
-          <p>© 2024 jejuolledev. All rights reserved.</p>
+          <p>© 2026 모아허브. All rights reserved.</p>
           <p className="text-xs">
             Built with Next.js & Tailwind CSS
           </p>

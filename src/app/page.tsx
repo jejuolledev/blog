@@ -70,14 +70,14 @@ function MainContent() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>
         <div className="relative mx-auto max-w-5xl">
-          <p className="font-mono text-sm text-emerald-400">~/jejuolledev</p>
+          <p className="font-mono text-sm text-emerald-400">~/moahub</p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">
             배정길의 작업실
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-gray-300">
-            프론트엔드 개발과 디자인 사이 어딘가에서 작업하고 있습니다.
+            개인 개발자로서 앱과 웹 서비스를 만들고 있습니다.
             <br />
-            앱과 웹 서비스를 만들고, 그 과정을 기록합니다.
+            그 과정과 배움을 이곳에 기록합니다.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -115,50 +115,18 @@ function MainContent() {
         </div>
       </section>
 
-      {/* Skills Preview */}
-      <section className="border-t border-canvas-muted bg-canvas-muted/30 px-6 py-16">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold">Tech Stack</h2>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {[
-              'React',
-              'Next.js',
-              'TypeScript',
-              'Tailwind CSS',
-              'Three.js',
-              'Supabase',
-              'Figma',
-              'Node.js',
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full bg-canvas px-4 py-2 text-sm font-medium"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-          <Link
-            href="/skills"
-            className="mt-6 inline-block text-sm text-accent hover:underline"
-          >
-            더 보기 →
-          </Link>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-canvas-muted px-6 py-12">
         <div className="mx-auto max-w-5xl text-center text-sm text-text-muted">
           <div className="mb-4 flex justify-center gap-6">
-            <a href="https://github.com/jejuolledev" className="hover:text-accent">
-              GitHub
+            <a href="https://moahub.co.kr" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              MoaHub
             </a>
             <Link href="/contact" className="hover:text-accent">
               Contact
             </Link>
           </div>
-          <p>© 2024 jejuolledev. All rights reserved.</p>
+          <p>© 2026 모아허브. All rights reserved.</p>
         </div>
       </footer>
     </div>

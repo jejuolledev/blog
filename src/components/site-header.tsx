@@ -8,7 +8,6 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
   { href: '/devlog', label: 'Devlog' },
-  { href: '/skills', label: 'Skills' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -21,7 +20,7 @@ export function SiteHeader() {
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl">💻</span>
-          <span className="text-lg font-bold">jejuolledev</span>
+          <span className="text-lg font-bold">모아허브</span>
         </Link>
 
         <nav

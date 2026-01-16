@@ -8,7 +8,7 @@ interface BootSequenceProps {
 
 const bootMessages = [
   { text: 'BIOS Version 1.0.0', delay: 50 },
-  { text: 'Copyright (C) 2024 ZZB Labs / JejuOlleDev', delay: 80 },
+  { text: 'Copyright (C) 2025 모아허브', delay: 80 },
   { text: '', delay: 30 },
   { text: 'CPU: Creative Mind @ 3.5GHz', delay: 60 },
   { text: 'Memory Test: 16384MB OK', delay: 80 },
