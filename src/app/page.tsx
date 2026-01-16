@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { BootSequence } from '@/components/boot/BootSequence';
 import { FullscreenStack } from '@/components/fullscreen-stack';
 import { NetworkBackground } from '@/components/network-background';
-import { FloatingGridBackground } from '@/components/backgrounds/floating-grid';
+import { SwiftCodeBackground } from '@/components/backgrounds/swift-code';
 import { CodeRainBackground } from '@/components/backgrounds/code-rain';
 import { AuroraWaveBackground } from '@/components/backgrounds/aurora-wave';
 import { PulseWaveBackground } from '@/components/backgrounds/pulse-wave';
@@ -183,7 +183,7 @@ function ProjectsSection() {
 
   return (
     <div className="relative flex h-full items-center justify-center overflow-hidden px-6 pt-20">
-      <FloatingGridBackground />
+      <SwiftCodeBackground />
       <div className="relative z-10 w-full max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
