@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { PageTransition } from '@/components/page-transition';
 
 export const metadata = {
   title: 'About',
@@ -9,7 +10,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <>
+    <PageTransition>
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-6 py-12">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
@@ -115,7 +116,7 @@ export default function AboutPage() {
         </div>
       </main>
       <SiteFooter />
-    </>
+    </PageTransition>
   );
 }
 

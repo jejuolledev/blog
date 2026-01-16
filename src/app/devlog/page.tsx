@@ -3,6 +3,7 @@ import { getPublishedDevlogs, getMoodEmoji } from '@/lib/content';
 import { format } from 'date-fns';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { PageTransition } from '@/components/page-transition';
 
 export const metadata = {
   title: 'Devlog',
@@ -26,7 +27,7 @@ export default function DevlogPage() {
   );
 
   return (
-    <>
+    <PageTransition>
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-6 py-12">
         <div className="mb-12">
@@ -87,6 +88,6 @@ export default function DevlogPage() {
         )}
       </main>
       <SiteFooter />
-    </>
+    </PageTransition>
   );
 }
