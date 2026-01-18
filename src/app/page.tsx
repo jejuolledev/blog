@@ -258,10 +258,16 @@ function ProjectsSection() {
 function DevlogSection() {
   const recentLogs = [
     {
-      title: '블로그 리디자인 완료',
-      date: '2024.03.20',
-      mood: '🎨',
-      slug: '/devlog/2024-03-20-blog-redesign',
+      title: '바로맵 v1.1.0 업데이트 심사 제출 완료!',
+      date: '2026.01.18',
+      mood: '🚀',
+      slug: '/devlog/2026-01-18-baromap-update-v1-1-0',
+    },
+    {
+      title: '드디어 런칭! MoaHub & BaroMap 동시 오픈',
+      date: '2026.01.10',
+      mood: '🎉',
+      slug: '/devlog/2026-01-10-double-launch',
     },
   ];
 
