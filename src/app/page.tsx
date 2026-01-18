@@ -338,7 +338,7 @@ function DevlogSection() {
 
 function AboutSection() {
   return (
-    <div className="relative flex h-full items-center justify-center overflow-hidden px-6 pt-20">
+    <div className="relative flex min-h-full flex-col items-center justify-center px-6 py-24">
       <StarFieldBackground />
       <div className="relative z-10 w-full max-w-4xl">
         <motion.div
@@ -355,8 +355,11 @@ function AboutSection() {
             />
           </div>
           <h2 className="text-4xl font-bold text-white md:text-5xl">배정길</h2>
-          <p className="mt-2 text-xl text-emerald-400">
-            앱 개발자 · 모아허브 & 바로맵 운영
+          <p
+            className="mt-2 text-xl text-emerald-400"
+            style={{ wordBreak: 'keep-all' }}
+          >
+            앱 개발자 · 모아허브 & <span className="inline-block">바로맵 운영</span>
           </p>
           <p className="mx-auto mt-6 max-w-2xl text-gray-300">
             사용자에게 즐거움을 주는 웹 <span className="text-emerald-400 font-semibold">MoaHub</span>와
