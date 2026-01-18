@@ -347,15 +347,21 @@ function AboutSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="mx-auto mb-8 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-6xl shadow-lg shadow-emerald-500/30">
-            👨‍💻
+          <div className="mx-auto mb-8 h-40 w-40 overflow-hidden rounded-full border-4 border-emerald-500/30 shadow-lg shadow-emerald-500/30">
+            <img
+              src="/images/profile.jpg"
+              alt="Profile"
+              className="h-full w-full object-cover"
+            />
           </div>
           <h2 className="text-4xl font-bold text-white md:text-5xl">배정길</h2>
-          <p className="mt-2 text-xl text-emerald-400">개인 개발자 · 모아허브 운영</p>
+          <p className="mt-2 text-xl text-emerald-400">
+            앱 개발자 · 모아허브 & 바로맵 운영
+          </p>
           <p className="mx-auto mt-6 max-w-2xl text-gray-300">
-            앱과 웹 서비스를 만들고 운영하는 개인 개발자입니다.
+            사용자에게 즐거움을 주는 웹 <span className="text-emerald-400 font-semibold">MoaHub</span>와
             <br />
-            사용자에게 즐거움과 편의를 주는 서비스를 만들고 있습니다.
+            편리함을 주는 앱 <span className="text-emerald-400 font-semibold">BaroMap</span>을 만들고 운영합니다.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
