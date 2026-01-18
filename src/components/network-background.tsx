@@ -10,28 +10,56 @@ interface Particle {
   radius: number;
 }
 
-export function NetworkBackground() {
+export interface NetworkBackgroundProps {
+  color?: string;
+  particleCountMultiplier?: number;
+  speedMultiplier?: number;
+  connectionDistance?: number;
+  interactionRadius?: number;
+}
+
+export function NetworkBackground({
+  color = 'rgba(16, 185, 129', // Default Emerald green without alpha/closing parenthesis if we want to manipulate alpha
+  particleCountMultiplier = 1,
+  speedMultiplier = 1,
+  connectionDistance = 120,
+  interactionRadius = 150
+}: NetworkBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationRef = useRef<number>();
 
+  // Parse color to rgb values if possible, or just use as base
+  // For simplicity dealing with existing code which constructs rgba strings manually:
+  // We'll assume the input is like "rgba(r, g, b" or "#hex" and we might need to handle it.
+  // Given current usage is rgba(16, 185, 129, alpha), let's make the prop customizable.
+  // To keep it simple and robust with the existing alpha manipulations in the drawing code, 
+  // let's expect the `color` prop to be the r,g,b triplet e.g. "16, 185, 129"
+
+  // Actually, to make it easier for usage, let's accept "rgba(r,g,b)" string and extract or just pass r,g,b string.
+  // Let's refine the prop to be `baseColorRgb` like "16, 185, 129".
+
+  const baseColor = color.startsWith('rgba')
+    ? color.match(/\d+,\s*\d+,\s*\d+/)?.[0] || '16, 185, 129'
+    : '16, 185, 129'; // Fallback
+
   const initParticles = useCallback((width: number, height: number) => {
-    const particleCount = Math.floor((width * height) / 15000);
+    const particleCount = Math.floor((width * height) / 15000) * particleCountMultiplier;
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
+        vx: (Math.random() - 0.5) * 0.5 * speedMultiplier,
+        vy: (Math.random() - 0.5) * 0.5 * speedMultiplier,
         radius: Math.random() * 2 + 1,
       });
     }
 
     particlesRef.current = particles;
-  }, []);
+  }, [particleCountMultiplier, speedMultiplier]);
 
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
@@ -64,23 +92,24 @@ export function NetworkBackground() {
       const dy = mouse.y - particle.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < 150) {
-        const force = (150 - dist) / 150;
-        particle.vx -= (dx / dist) * force * 0.02;
-        particle.vy -= (dy / dist) * force * 0.02;
+      if (dist < interactionRadius) {
+        const force = (interactionRadius - dist) / interactionRadius;
+        particle.vx -= (dx / dist) * force * 0.02 * speedMultiplier;
+        particle.vy -= (dy / dist) * force * 0.02 * speedMultiplier;
       }
 
       // Limit velocity
-      const speed = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
-      if (speed > 2) {
-        particle.vx = (particle.vx / speed) * 2;
-        particle.vy = (particle.vy / speed) * 2;
+      const currentSpeed = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
+      const maxSpeed = 2 * speedMultiplier;
+      if (currentSpeed > maxSpeed) {
+        particle.vx = (particle.vx / currentSpeed) * maxSpeed;
+        particle.vy = (particle.vy / currentSpeed) * maxSpeed;
       }
 
       // Draw particle
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(16, 185, 129, 0.8)';
+      ctx.fillStyle = `rgba(${baseColor}, 0.8)`;
       ctx.fill();
 
       // Draw connections
@@ -90,22 +119,22 @@ export function NetworkBackground() {
         const dy = particle.y - other.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 120) {
+        if (distance < connectionDistance) {
           ctx.beginPath();
           ctx.moveTo(particle.x, particle.y);
           ctx.lineTo(other.x, other.y);
-          ctx.strokeStyle = `rgba(16, 185, 129, ${0.3 * (1 - distance / 120)})`;
+          ctx.strokeStyle = `rgba(${baseColor}, ${0.3 * (1 - distance / connectionDistance)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
 
       // Connect to mouse
-      if (dist < 200) {
+      if (dist < interactionRadius + 50) { // Slightly larger radius for mouse connections
         ctx.beginPath();
         ctx.moveTo(particle.x, particle.y);
         ctx.lineTo(mouse.x, mouse.y);
-        ctx.strokeStyle = `rgba(52, 211, 153, ${0.5 * (1 - dist / 200)})`;
+        ctx.strokeStyle = `rgba(${baseColor}, ${0.5 * (1 - dist / (interactionRadius + 50))})`;
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -113,15 +142,15 @@ export function NetworkBackground() {
 
     // Draw mouse glow
     const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 100);
-    gradient.addColorStop(0, 'rgba(16, 185, 129, 0.15)');
-    gradient.addColorStop(1, 'rgba(16, 185, 129, 0)');
+    gradient.addColorStop(0, `rgba(${baseColor}, 0.15)`);
+    gradient.addColorStop(1, `rgba(${baseColor}, 0)`);
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.arc(mouse.x, mouse.y, 100, 0, Math.PI * 2);
     ctx.fill();
 
     animationRef.current = requestAnimationFrame(animate);
-  }, []);
+  }, [baseColor, connectionDistance, interactionRadius, speedMultiplier]);
 
   useEffect(() => {
     const canvas = canvasRef.current;

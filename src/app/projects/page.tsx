@@ -33,9 +33,19 @@ export default function ProjectsPage() {
                 href={`/projects/${project.slug}`}
                 className="group rounded-2xl border border-canvas-muted bg-canvas p-6 transition-all hover:border-accent hover:shadow-xl"
               >
-                {/* Thumbnail placeholder */}
-                <div className="aspect-video rounded-xl bg-gradient-to-br from-canvas-muted to-canvas-muted/50 flex items-center justify-center">
-                  <span className="text-4xl opacity-50">🖥️</span>
+                {/* Thumbnail */}
+                <div className="aspect-video w-full overflow-hidden rounded-xl bg-canvas-muted">
+                  {project.thumbnail ? (
+                    <img
+                      src={project.thumbnail}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-canvas-muted to-canvas-muted/50">
+                      <span className="text-4xl opacity-50">🖥️</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-6">

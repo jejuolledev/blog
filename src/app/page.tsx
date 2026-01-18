@@ -11,6 +11,8 @@ import { SwiftCodeBackground } from '@/components/backgrounds/swift-code';
 import { CodeRainBackground } from '@/components/backgrounds/code-rain';
 import { AuroraWaveBackground } from '@/components/backgrounds/aurora-wave';
 import { PulseWaveBackground } from '@/components/backgrounds/pulse-wave';
+import { StarFieldBackground } from '@/components/backgrounds/StarFieldBackground';
+import { WarpSpeedBackground } from '@/components/backgrounds/WarpSpeedBackground';
 
 const ComputerScene = dynamic(
   () => import('@/components/boot/ComputerScene').then((mod) => mod.ComputerScene),
@@ -331,7 +333,7 @@ function DevlogSection() {
 function AboutSection() {
   return (
     <div className="relative flex h-full items-center justify-center overflow-hidden px-6 pt-20">
-      <AuroraWaveBackground />
+      <StarFieldBackground />
       <div className="relative z-10 w-full max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -387,7 +389,7 @@ function AboutSection() {
 function ContactSection() {
   return (
     <div className="relative flex h-full items-center justify-center overflow-hidden px-6 pt-20">
-      <PulseWaveBackground />
+      <WarpSpeedBackground />
       <div className="relative z-10 w-full max-w-2xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

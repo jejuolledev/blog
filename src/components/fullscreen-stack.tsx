@@ -94,18 +94,16 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
                 aria-label={`Go to ${section.label}`}
               >
                 <span
-                  className={`hidden text-xs font-medium transition-all group-hover:inline-block ${
-                    activeIndex === index ? 'text-accent' : 'text-text-muted'
-                  }`}
+                  className={`hidden text-xs font-medium transition-all group-hover:inline-block ${activeIndex === index ? 'text-accent' : 'text-text-muted'
+                    }`}
                 >
                   {section.label}
                 </span>
                 <span
-                  className={`block h-3 w-3 rounded-full border-2 transition-all ${
-                    activeIndex === index
+                  className={`block h-3 w-3 rounded-full border-2 transition-all ${activeIndex === index
                       ? 'border-accent bg-accent scale-125'
                       : 'border-text-muted bg-transparent hover:border-accent'
-                  }`}
+                    }`}
                 />
               </button>
             </li>
@@ -129,11 +127,10 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
               <button
                 key={section.id}
                 onClick={() => scrollToSection(index)}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                  activeIndex === index
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${activeIndex === index
                     ? 'bg-accent/10 text-accent'
                     : 'text-text-muted hover:bg-canvas-muted hover:text-text'
-                }`}
+                  }`}
               >
                 {section.label}
               </button>
@@ -141,14 +138,7 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
           </nav>
 
           <div className="flex items-center gap-4">
-            <a
-              href="https://moahub.co.kr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-text-muted hover:text-accent"
-            >
-              MoaHub →
-            </a>
+            {/* MoaHub link removed as requested */}
           </div>
         </div>
       </header>
