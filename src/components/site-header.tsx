@@ -19,7 +19,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-canvas-muted/70 bg-canvas/90 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl">💻</span>
+          <div className="h-8 w-8 overflow-hidden rounded-full border border-white/10">
+            <img src="/images/profile.jpg" alt="Profile" className="h-full w-full object-cover" />
+          </div>
           <span className="text-lg font-bold">모아허브</span>
         </Link>
 
@@ -37,11 +39,10 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-lg px-3 py-2 transition-colors ${
-                  isActive
+                className={`rounded-lg px-3 py-2 transition-colors ${isActive
                     ? 'bg-accent/10 text-accent'
                     : 'text-text-muted hover:bg-canvas-muted hover:text-text'
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
@@ -88,11 +89,10 @@ function MobileMenu({ pathname }: { pathname: string | null }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`block rounded-lg px-4 py-2 text-sm ${
-                  isActive
+                className={`block rounded-lg px-4 py-2 text-sm ${isActive
                     ? 'bg-accent/10 text-accent'
                     : 'text-text-muted hover:bg-canvas-muted hover:text-text'
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>

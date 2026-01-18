@@ -101,8 +101,8 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
                 </span>
                 <span
                   className={`block h-3 w-3 rounded-full border-2 transition-all ${activeIndex === index
-                      ? 'border-accent bg-accent scale-125'
-                      : 'border-text-muted bg-transparent hover:border-accent'
+                    ? 'border-accent bg-accent scale-125'
+                    : 'border-text-muted bg-transparent hover:border-accent'
                     }`}
                 />
               </button>
@@ -118,7 +118,9 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
             onClick={() => scrollToSection(0)}
             className="flex items-center gap-2"
           >
-            <span className="text-xl">💻</span>
+            <div className="h-8 w-8 overflow-hidden rounded-full border border-white/10">
+              <img src="/images/profile.jpg" alt="Profile" className="h-full w-full object-cover" />
+            </div>
             <span className="text-lg font-bold">모아허브</span>
           </button>
 
@@ -128,8 +130,8 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
                 key={section.id}
                 onClick={() => scrollToSection(index)}
                 className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${activeIndex === index
-                    ? 'bg-accent/10 text-accent'
-                    : 'text-text-muted hover:bg-canvas-muted hover:text-text'
+                  ? 'bg-accent/10 text-accent'
+                  : 'text-text-muted hover:bg-canvas-muted hover:text-text'
                   }`}
               >
                 {section.label}

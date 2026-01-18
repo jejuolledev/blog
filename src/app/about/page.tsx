@@ -17,13 +17,15 @@ export default function AboutPage() {
           {/* Profile Section */}
           <aside>
             <div className="sticky top-24">
-              <div className="aspect-square w-48 overflow-hidden rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5">
-                <div className="flex h-full items-center justify-center text-6xl">
-                  👨‍💻
-                </div>
+              <div className="aspect-square w-48 overflow-hidden rounded-2xl border-4 border-accent/20 bg-gradient-to-br from-accent/20 to-accent/5">
+                <img
+                  src="/images/profile.jpg"
+                  alt="Profile"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <h1 className="mt-6 text-2xl font-bold">배정길</h1>
-              <p className="mt-2 text-text-muted">개인 개발자 (모아허브)</p>
+              <p className="mt-2 text-text-muted">앱 개발자 (모아허브 & 바로맵)</p>
 
               <div className="mt-6 space-y-2 text-sm">
                 <a
