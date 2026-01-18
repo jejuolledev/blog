@@ -138,7 +138,7 @@ function ContactMethod({
     return (
       <a
         href={href}
-        target={href.startsWith('http') ? '_blank' : undefined}
+        target={href.startsWith('http') ? '_blank' : '_self'}
         rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
         className="block transition-opacity hover:opacity-70"
       >

@@ -416,6 +416,7 @@ function ContactSection() {
           <div className="mt-12 space-y-6">
             <a
               href="mailto:jejuolleapps@gmail.com"
+              target="_self"
               className="group flex items-center justify-center gap-4 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-sm transition-all hover:border-emerald-500/50"
             >
               <span className="text-2xl">📧</span>

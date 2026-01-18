@@ -33,7 +33,7 @@ export function SiteFooter() {
           <div>
             <h4 className="font-semibold">Connect</h4>
             <div className="mt-3 flex flex-col gap-2 text-sm text-text-muted">
-              <a href="mailto:jejuolleapps@gmail.com" className="hover:text-accent">
+              <a href="mailto:jejuolleapps@gmail.com" target="_self" className="hover:text-accent">
                 Email
               </a>
               <a
