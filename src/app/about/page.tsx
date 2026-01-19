@@ -15,8 +15,8 @@ export default function AboutPage() {
       <main className="mx-auto max-w-4xl px-6 py-12">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
           {/* Profile Section */}
-          <aside>
-            <div className="sticky top-24">
+          <aside className="lg:h-fit">
+            <div className="lg:sticky lg:top-24" style={{ WebkitTransform: 'translateZ(0)' }}>
               <div className="aspect-square w-48 overflow-hidden rounded-2xl border-4 border-accent/20 bg-gradient-to-br from-accent/20 to-accent/5">
                 <img
                   src="/images/profile.jpg"

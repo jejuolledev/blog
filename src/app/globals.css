@@ -22,6 +22,21 @@
 
 body {
   @apply bg-canvas text-text antialiased;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* iOS Safari scroll fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS only styles */
+  .snap-y {
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .snap-start {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 
 ::selection {

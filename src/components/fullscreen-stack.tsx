@@ -61,8 +61,12 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
       {/* Main scrollable container */}
       <div
         ref={containerRef}
-        className="h-screen overflow-y-auto snap-y snap-mandatory"
-        style={{ scrollSnapType: 'y mandatory' }}
+        className="h-screen overflow-y-auto snap-y snap-mandatory overscroll-none"
+        style={{
+          scrollSnapType: 'y mandatory',
+          WebkitOverflowScrolling: 'touch',
+          touchAction: 'pan-y',
+        }}
       >
         {sections.map((section, index) => (
           <motion.section
@@ -76,7 +80,7 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
             }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="h-full w-full overflow-y-auto">
+            <div className="h-full w-full overflow-hidden">
               {section.content}
             </div>
           </motion.section>
