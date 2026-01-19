@@ -88,13 +88,13 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
       </div>
 
       {/* Side navigation dots */}
-      <nav className="fixed right-6 top-1/2 z-50 -translate-y-1/2">
-        <ul className="flex flex-col gap-3">
+      <nav className="fixed right-3 sm:right-6 top-1/2 z-50 -translate-y-1/2">
+        <ul className="flex flex-col gap-2 sm:gap-3">
           {sections.map((section, index) => (
             <li key={section.id}>
               <button
                 onClick={() => scrollToSection(index)}
-                className="group flex items-center gap-3"
+                className="group flex items-center gap-2 sm:gap-3"
                 aria-label={`Go to ${section.label}`}
               >
                 <span
@@ -104,7 +104,7 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
                   {section.label}
                 </span>
                 <span
-                  className={`block h-3 w-3 rounded-full border-2 transition-all ${activeIndex === index
+                  className={`block h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full border-2 transition-all ${activeIndex === index
                     ? 'border-accent bg-accent scale-125'
                     : 'border-text-muted bg-transparent hover:border-accent'
                     }`}
@@ -117,15 +117,15 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
 
       {/* Top navigation bar */}
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-canvas-muted/30 bg-canvas/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
           <button
             onClick={() => scrollToSection(0)}
             className="flex items-center gap-2"
           >
-            <div className="h-8 w-8 overflow-hidden rounded-full border border-white/10">
+            <div className="h-7 w-7 sm:h-8 sm:w-8 overflow-hidden rounded-full border border-white/10">
               <img src="/images/profile.jpg" alt="Profile" className="h-full w-full object-cover" />
             </div>
-            <span className="text-lg font-bold">모아허브</span>
+            <span className="text-base sm:text-lg font-bold">모아허브</span>
           </button>
 
           <nav className="hidden items-center gap-1 md:flex">
@@ -156,15 +156,15 @@ export function FullscreenStack({ sections }: FullscreenStackProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2"
+            className="fixed bottom-4 sm:bottom-8 left-1/2 z-50 -translate-x-1/2"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="flex flex-col items-center gap-2 text-text-muted"
+              className="flex flex-col items-center gap-1 sm:gap-2 text-text-muted"
             >
-              <span className="text-xs">Scroll</span>
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span className="text-[10px] sm:text-xs">Scroll</span>
+              <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </motion.div>

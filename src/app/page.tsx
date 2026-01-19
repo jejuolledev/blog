@@ -110,7 +110,7 @@ function MainContent() {
 
 function HomeSection() {
   return (
-    <div className="relative flex h-full items-center justify-center overflow-hidden px-6">
+    <div className="relative flex h-full items-center justify-center overflow-hidden px-4 sm:px-6">
       {/* Interactive Network Background */}
       <NetworkBackground />
 
@@ -120,7 +120,7 @@ function HomeSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="font-mono text-sm text-emerald-400"
+          className="font-mono text-xs sm:text-sm text-emerald-400"
         >
           ~/moahub
         </motion.p>
@@ -128,7 +128,7 @@ function HomeSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mt-4 text-5xl font-bold tracking-tight md:text-7xl"
+          className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight"
         >
           배정길의 작업실
         </motion.h1>
@@ -136,7 +136,7 @@ function HomeSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 md:text-xl"
+          className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-gray-300"
         >
           개인 개발자로서 앱과 웹 서비스를 만들고 있습니다.
           <br />
@@ -146,15 +146,15 @@ function HomeSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="mt-10 flex flex-wrap justify-center gap-4"
+          className="mt-6 sm:mt-10 flex flex-wrap justify-center gap-2 sm:gap-4"
         >
-          <span className="rounded-full bg-emerald-500/20 px-4 py-2 text-sm text-emerald-400">
+          <span className="rounded-full bg-emerald-500/20 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-emerald-400">
             iOS App Developer
           </span>
-          <span className="rounded-full bg-emerald-500/20 px-4 py-2 text-sm text-emerald-400">
+          <span className="rounded-full bg-emerald-500/20 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-emerald-400">
             Web Developer
           </span>
-          <span className="rounded-full bg-emerald-500/20 px-4 py-2 text-sm text-emerald-400">
+          <span className="rounded-full bg-emerald-500/20 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-emerald-400">
             모아허브 운영
           </span>
         </motion.div>
@@ -184,20 +184,20 @@ function ProjectsSection() {
   ];
 
   return (
-    <div className="relative flex h-full items-center justify-center overflow-hidden px-6 pt-20">
+    <div className="relative flex h-full items-center justify-center overflow-hidden px-4 sm:px-6 pt-16 sm:pt-20">
       <SwiftCodeBackground />
       <div className="relative z-10 w-full max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="mb-6 sm:mb-12 text-center"
         >
-          <h2 className="text-4xl font-bold text-white md:text-5xl">Projects</h2>
-          <p className="mt-4 text-gray-400">만들고 운영 중인 서비스들</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Projects</h2>
+          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-400">만들고 운영 중인 서비스들</p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -208,28 +208,28 @@ function ProjectsSection() {
             >
               <Link
                 href={project.slug}
-                className="group block rounded-2xl border border-white/10 bg-black/30 p-8 backdrop-blur-sm transition-all hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10"
+                className="group block rounded-xl sm:rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6 md:p-8 backdrop-blur-sm transition-all hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10"
               >
                 {project.featured && (
-                  <span className="mb-4 inline-block rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-400">
+                  <span className="mb-3 sm:mb-4 inline-block rounded-full bg-emerald-500/20 px-2.5 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-emerald-400">
                     Featured
                   </span>
                 )}
-                <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white group-hover:text-emerald-400">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-gray-400">{project.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <p className="mt-2 sm:mt-3 text-sm sm:text-base text-gray-400">{project.description}</p>
+                <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-white/5 px-3 py-1 text-xs text-gray-400"
+                      className="rounded-full bg-white/5 px-2 sm:px-3 py-0.5 sm:py-1 text-xs text-gray-400"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="mt-6 flex items-center text-sm text-emerald-400">
+                <div className="mt-4 sm:mt-6 flex items-center text-xs sm:text-sm text-emerald-400">
                   자세히 보기 →
                 </div>
               </Link>
@@ -241,11 +241,11 @@ function ProjectsSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-8 text-center"
+          className="mt-6 sm:mt-8 text-center"
         >
           <Link
             href="/projects"
-            className="inline-block rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white transition-all hover:border-emerald-500 hover:text-emerald-400"
+            className="inline-block rounded-lg border border-white/20 px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all hover:border-emerald-500 hover:text-emerald-400"
           >
             모든 프로젝트 보기 →
           </Link>
@@ -272,20 +272,20 @@ function DevlogSection() {
   ];
 
   return (
-    <div className="relative flex h-full items-center justify-center overflow-hidden px-6 pt-20">
+    <div className="relative flex h-full items-center justify-center overflow-hidden px-4 sm:px-6 pt-16 sm:pt-20">
       <CodeRainBackground />
       <div className="relative z-10 w-full max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="mb-6 sm:mb-12 text-center"
         >
-          <h2 className="text-4xl font-bold text-white md:text-5xl">Devlog</h2>
-          <p className="mt-4 text-gray-400">개발하면서 배우고 느낀 것들을 기록합니다</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Devlog</h2>
+          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-400">개발하면서 배우고 느낀 것들을 기록합니다</p>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {recentLogs.map((log, index) => (
             <motion.div
               key={log.slug}
@@ -296,25 +296,25 @@ function DevlogSection() {
             >
               <Link
                 href={log.slug}
-                className="group flex items-center gap-4 rounded-xl border border-white/10 bg-black/50 p-6 backdrop-blur-sm transition-all hover:border-emerald-500/50"
+                className="group flex items-center gap-3 sm:gap-4 rounded-xl border border-white/10 bg-black/50 p-4 sm:p-6 backdrop-blur-sm transition-all hover:border-emerald-500/50"
               >
-                <span className="text-3xl">{log.mood}</span>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white group-hover:text-emerald-400">
+                <span className="text-2xl sm:text-3xl">{log.mood}</span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-emerald-400 truncate">
                     {log.title}
                   </h3>
-                  <p className="text-sm text-gray-500">{log.date}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">{log.date}</p>
                 </div>
-                <span className="text-gray-500 group-hover:text-emerald-400">→</span>
+                <span className="text-gray-500 group-hover:text-emerald-400 flex-shrink-0">→</span>
               </Link>
             </motion.div>
           ))}
         </div>
 
         {recentLogs.length === 0 && (
-          <div className="rounded-xl border border-white/10 bg-black/50 p-12 text-center backdrop-blur-sm">
-            <p className="text-gray-400">아직 개발 일지가 없습니다.</p>
-            <p className="mt-2 text-sm text-gray-500">곧 첫 번째 글을 작성할 예정이에요!</p>
+          <div className="rounded-xl border border-white/10 bg-black/50 p-8 sm:p-12 text-center backdrop-blur-sm">
+            <p className="text-sm sm:text-base text-gray-400">아직 개발 일지가 없습니다.</p>
+            <p className="mt-2 text-xs sm:text-sm text-gray-500">곧 첫 번째 글을 작성할 예정이에요!</p>
           </div>
         )}
 
@@ -322,11 +322,11 @@ function DevlogSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-8 text-center"
+          className="mt-6 sm:mt-8 text-center"
         >
           <Link
             href="/devlog"
-            className="inline-block rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white transition-all hover:border-emerald-500 hover:text-emerald-400"
+            className="inline-block rounded-lg border border-white/20 px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all hover:border-emerald-500 hover:text-emerald-400"
           >
             모든 개발 일지 보기 →
           </Link>
@@ -338,7 +338,7 @@ function DevlogSection() {
 
 function AboutSection() {
   return (
-    <div className="relative flex min-h-full flex-col items-center justify-center px-6 py-24">
+    <div className="relative flex min-h-full flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-24">
       <StarFieldBackground />
       <div className="relative z-10 w-full max-w-4xl">
         <motion.div
@@ -347,38 +347,38 @@ function AboutSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="mx-auto mb-8 h-40 w-40 overflow-hidden rounded-full border-4 border-emerald-500/30 shadow-lg shadow-emerald-500/30">
+          <div className="mx-auto mb-4 sm:mb-8 h-28 w-28 sm:h-32 sm:w-32 md:h-40 md:w-40 overflow-hidden rounded-full border-4 border-emerald-500/30 shadow-lg shadow-emerald-500/30">
             <img
               src="/images/profile.jpg"
               alt="Profile"
               className="h-full w-full object-cover"
             />
           </div>
-          <h2 className="text-4xl font-bold text-white md:text-5xl">배정길</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">배정길</h2>
           <p
-            className="mt-2 text-xl text-emerald-400"
+            className="mt-2 text-base sm:text-lg md:text-xl text-emerald-400"
             style={{ wordBreak: 'keep-all' }}
           >
             앱 개발자 · 모아허브 & <span className="inline-block">바로맵 운영</span>
           </p>
-          <p className="mx-auto mt-6 max-w-2xl text-gray-300">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base text-gray-300">
             사용자에게 즐거움을 주는 웹 <span className="text-emerald-400 font-semibold">MoaHub</span>와
             <br />
             편리함을 주는 앱 <span className="text-emerald-400 font-semibold">BaroMap</span>을 만들고 운영합니다.
           </p>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <div className="rounded-xl border border-white/10 bg-black/30 px-6 py-4 backdrop-blur-sm">
-              <p className="text-2xl font-bold text-emerald-400">2+</p>
-              <p className="text-sm text-gray-400">운영 중인 서비스</p>
+          <div className="mt-6 sm:mt-10 flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="rounded-lg sm:rounded-xl border border-white/10 bg-black/30 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-sm">
+              <p className="text-xl sm:text-2xl font-bold text-emerald-400">2+</p>
+              <p className="text-xs sm:text-sm text-gray-400">운영 중인 서비스</p>
             </div>
-            <div className="rounded-xl border border-white/10 bg-black/30 px-6 py-4 backdrop-blur-sm">
-              <p className="text-2xl font-bold text-emerald-400">2025~</p>
-              <p className="text-sm text-gray-400">개발 시작</p>
+            <div className="rounded-lg sm:rounded-xl border border-white/10 bg-black/30 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-sm">
+              <p className="text-xl sm:text-2xl font-bold text-emerald-400">2025~</p>
+              <p className="text-xs sm:text-sm text-gray-400">개발 시작</p>
             </div>
-            <div className="rounded-xl border border-white/10 bg-black/30 px-6 py-4 backdrop-blur-sm">
-              <p className="text-2xl font-bold text-emerald-400">제주</p>
-              <p className="text-sm text-gray-400">Based in</p>
+            <div className="rounded-lg sm:rounded-xl border border-white/10 bg-black/30 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-sm">
+              <p className="text-xl sm:text-2xl font-bold text-emerald-400">제주</p>
+              <p className="text-xs sm:text-sm text-gray-400">Based in</p>
             </div>
           </div>
         </motion.div>
@@ -387,11 +387,11 @@ function AboutSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-8 text-center"
+          className="mt-6 sm:mt-8 text-center"
         >
           <Link
             href="/about"
-            className="inline-block rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white transition-all hover:border-emerald-500 hover:text-emerald-400"
+            className="inline-block rounded-lg border border-white/20 px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all hover:border-emerald-500 hover:text-emerald-400"
           >
             더 알아보기 →
           </Link>
@@ -403,7 +403,7 @@ function AboutSection() {
 
 function ContactSection() {
   return (
-    <div className="relative flex h-full items-center justify-center overflow-hidden px-6 pt-20">
+    <div className="relative flex h-full items-center justify-center overflow-hidden px-4 sm:px-6 pt-16 sm:pt-20">
       <WarpSpeedBackground />
       <div className="relative z-10 w-full max-w-2xl text-center">
         <motion.div
@@ -411,21 +411,21 @@ function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-white md:text-5xl">Contact</h2>
-          <p className="mt-4 text-gray-400">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Contact</h2>
+          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-400">
             프로젝트 협업, 질문, 또는 그냥 인사도 좋습니다!
           </p>
 
-          <div className="mt-12 space-y-6">
+          <div className="mt-8 sm:mt-12 space-y-4 sm:space-y-6">
             <a
               href="mailto:jejuolleapps@gmail.com"
               target="_self"
-              className="group flex items-center justify-center gap-4 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-sm transition-all hover:border-emerald-500/50"
+              className="group flex items-center justify-center gap-3 sm:gap-4 rounded-xl border border-white/10 bg-black/30 p-4 sm:p-6 backdrop-blur-sm transition-all hover:border-emerald-500/50"
             >
-              <span className="text-2xl">📧</span>
+              <span className="text-xl sm:text-2xl">📧</span>
               <div className="text-left">
-                <p className="text-sm text-gray-500">Email</p>
-                <p className="font-medium text-white group-hover:text-emerald-400">jejuolleapps@gmail.com</p>
+                <p className="text-xs sm:text-sm text-gray-500">Email</p>
+                <p className="text-sm sm:text-base font-medium text-white group-hover:text-emerald-400">jejuolleapps@gmail.com</p>
               </div>
             </a>
 
@@ -433,17 +433,17 @@ function ContactSection() {
               href="https://moahub.co.kr"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center gap-4 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-sm transition-all hover:border-emerald-500/50"
+              className="group flex items-center justify-center gap-3 sm:gap-4 rounded-xl border border-white/10 bg-black/30 p-4 sm:p-6 backdrop-blur-sm transition-all hover:border-emerald-500/50"
             >
-              <span className="text-2xl">🌐</span>
+              <span className="text-xl sm:text-2xl">🌐</span>
               <div className="text-left">
-                <p className="text-sm text-gray-500">MoaHub</p>
-                <p className="font-medium text-white group-hover:text-emerald-400">moahub.co.kr</p>
+                <p className="text-xs sm:text-sm text-gray-500">MoaHub</p>
+                <p className="text-sm sm:text-base font-medium text-white group-hover:text-emerald-400">moahub.co.kr</p>
               </div>
             </a>
           </div>
 
-          <p className="mt-16 text-sm text-gray-500">
+          <p className="mt-10 sm:mt-16 text-xs sm:text-sm text-gray-500">
             © 2026 모아허브. All rights reserved.
           </p>
         </motion.div>
